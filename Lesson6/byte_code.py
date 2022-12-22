@@ -1,21 +1,31 @@
 #!/usr/bin/python3
-a = input("Введите строку: ")
+
+string = input("Введите строку: ")
 
 def byte(n):
-    b = []
+    """Перевод символов в байт код
+
+    Принимает:
+        строку
+    Возвращает:
+        список байт кодов символов строки
+ 
+    """
+    byte_list = []
     for x in n:
         for y in x:
-            b.append(ord(y)) 
-    return b
+            byte_list.append(ord(y)) 
+    return byte_list
 
-b_cod = byte(a)
-print("Список байт кодов введенной строки:", b_cod, sep='\n')
+result = byte(string)
+print(f"Список байт кодов введенной строки:\n{result}")
             
 def invers_byte(c):
-    d = []
+    """Переводит байт код в символы"""
+    symbol_list = []
     for f in c:
-        d.append(chr(f))
-    e = "".join(d)
-    return e
+        symbol_list.append(chr(f))
+    return_string = "".join(symbol_list)
+    return return_string
         
-print("Введенная строка:", invers_byte(b_cod), sep='\n')
+print("Введенная строка:", invers_byte(result), sep='\n')
