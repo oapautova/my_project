@@ -1,3 +1,8 @@
 #!/usr/bin/python3
+
 line = input("Ввод: ")
-print("2 последних символа ввода, в обратном порядке: ", line[len(line) - 1], line[len(line) - 2], sep="")
+
+last = line[len(line) - 1]
+penult = line[len(line) - 2]
+
+print(f"2 последних символа ввода, в обратном порядке: {last}{penult}")
