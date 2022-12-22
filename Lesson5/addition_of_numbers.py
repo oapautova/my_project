@@ -1,24 +1,25 @@
 #!/usr/bin/python3
-print("Вас приветствует функция сложения чисел. Введите числа, которые необходимо сложить. Для завершения ввода и получения результата введите 'выход'")
+print("Введите числа, которые необходимо сложить.") 
+print("Для завершения ввода и получения результата нажмите Enter")
 
-l = []
+num_list = []
 while True:
-    a = input("Введите число: ")
+    num = input("Введите число: ")
     try:
-        a = complex(a)
-        l.append(a)
-    except:
-        if a == "выход":
+        num = complex(num)
+        num_list.append(num)
+    except ValueError:
+        if num == "":
             break
         print("Необходимо вводить только числа")
 
-def func(*num):
+def add(*arg):
     summa = 0
-    for x in num:
+    for x in arg:
         summa += x
     return summa
 
-result = func(*l)
+result = add(*num_list)
 if result.imag == 0:
     result = result.real
 
