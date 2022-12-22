@@ -1,28 +1,39 @@
 #!/usr/bin/python3
-l = []
+print("Для выхода и получения результата нажмите Enter")
+
+byte_list = []
 
 while True:
-    a = input("Введите целое число, в диапазоне от 0 до 1114111. Для выхода и получения результата нажмите Enter: ")
+    num = input("Введите целое число, в диапазоне от 0 до 1114111: ")
     try:
-        a = int(a)
-        if 0 <= a <= 1114111:
-            l.append(a)
+        num = int(num)
+        if 0 <= num <= 1114111:
+            byte_list.append(num)
         else:
             print("Число должно быть в диапазоне от 0 до 1114111")
             continue
-    except:
-        if a == "":
+    except ValueError:
+        if num == "":
             break
         else:
             print("Ввод не соответствует условию")
             continue
 
 
-def inverse_bytes(*n):
-    d = []
-    for x in n:
-        d.append(chr(x))
-    return d
+def inverse_bytes(*b):
+    '''Перевод быйт кода в символы
 
-print("Байт код:", l)    
-print("Соответствующие символы:", inverse_bytes(*l))
+    Принимает:
+        байт код
+    Возвращает:
+        соответствующие байт коду символы
+
+    '''
+
+    symbol_list = []
+    for x in b:
+        symbol_list.append(chr(x))
+    return symbol_list
+
+print("Байт код:", byte_list)    
+print("Соответствующие символы:", inverse_bytes(*byte_list))
