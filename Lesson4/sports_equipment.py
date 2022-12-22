@@ -1,61 +1,66 @@
 #!/usr/bin/python3
-d = {'беговые лыжи': 1, 'футбольный мяч': 0.5, 'коньки': 1.5, 'гантели': 5,
- 'обруч': 1, 'теннисная ракетка': 0.3, 'ласты': 0.5, 'сноуборд': 3, 'горные лыжи': 6,
- 'баскетбольный мяч': 0.7}
-a = list(d)
-d1 = {}
+invent = {'беговые лыжи': 1, 'футбольный мяч': 0.5, 'коньки': 1.5, 'гантели': 5,
+     'обруч': 1, 'теннисная ракетка': 0.3, 'ласты': 0.5, 'сноуборд': 3, 
+     'горные лыжи': 6, 'баскетбольный мяч': 0.7}
+
+set = list(invent)
+basket = {}
+
 print("Вам доступен для выбора спортивный инвентарь из списка ниже:")
 print()
-for i in range(len(d)):
-    print(f"{a[i]} - {d[a[i]]} кг")
+
+for i in range(len(invent)):
+    print(f"{set[i]} - {invent[set[i]]} кг")
 print()    
-print("Вы можете добавлять в корзину любой предмет в одном экземпляре. Вы можете удалить любой выбранный предмет из корзины. Вес корзины не может превышать 7 кг.")
+print("Вы можете добавлять в корзину любой предмет в одном экземпляре.")
+print("Вы можете удалить любой выбранный предмет из корзины") 
+print("Вес корзины не может превышать 7 кг")
 
 summa = 0
 
 while summa <= 7:
     if summa == 7:
-        print("Вес вашей корзины 7 кг, сейчас вы не можете добавлять предметы. Можете убрать предмет из корзины или завершить набор.")
-    b = input("добавить/удалить/завершить:").lower()
-    if b == "добавить":
-        c = input("введите название предмета, который хотите добавить:").lower()
-        if c in d:
-            summa += d[c]
+        print("Вес вашей корзины 7 кг, сейчас вы не можете добавлять предметы.")
+    action = input("добавить/удалить/завершить:").lower()
+    if action == "добавить":
+        choice = input("введите название предмета, который хотите добавить:").lower()
+        if choice in invent:
+            summa += invent[choice]
             if summa <= 7:
-               d1[c] = d[c]
-               a1 = list(d1)
-               d.pop(c)
-               for j in range(len(d1)):                 
-                   print(f"{a1[j]} - {d1[a1[j]]} кг")
+               basket[choice] = invent[choice]
+               set1 = list(basket)
+               invent.pop(choice)
+               for j in range(len(basket)):                 
+                   print(f"{set1[j]} - {basket[set1[j]]} кг")
                print(f"вес вашей корзины = {summa} кг")
             else:
-                summa -= d[c]
+                summa -= invent[choice]
                 print("Вы не можете добавить данный предмет. Превышен максимальный вес корзины.")
         else:
-            if c in d1:
+            if choice in basket:
                 print("Данный предмет уже есть в Вашей корзине")
             else:
                 print("Такого предмета нет")
             continue
-    elif b == "удалить":
-        c = input("Введите название предмета, который хотите удалить:").lower()
-        if c in d1:
-            summa -= d1[c]
-            d[c] = d1[c]
-            d1.pop(c)
-            a1 = list(d1)
-            for k in range(len(d1)):
-                print(f"{a1[k]} - {d1[a1[k]]} кг")              
+    elif action == "удалить":
+        choice = input("Введите название предмета, который хотите удалить:").lower()
+        if choice in basket:
+            summa -= basket[choice]
+            invent[choice] = basket[choice]
+            basket.pop(choice)
+            set1 = list(basket)
+            for k in range(len(basket)):
+                print(f"{set1[k]} - {basket[set1[k]]} кг")              
             print(f"вес вашей корзины = {summa} кг")
         else:
-            if c in d:
+            if choice in invent:
                 print("Данного предмета нет в Вашей корзине")
             else:
                 print("Нет такого предмета")
-    elif b == "завершить":
+    elif action == "завершить":
         print("Ваша корзина:")
-        for l in range(len(d1)):
-            print(f"{a1[l]} - {d1[a1[l]]} кг")
+        for m in range(len(basket)):
+            print(f"{set1[m]} - {basket[set1[m]]} кг")
         print("До свидания!")
         break
     else:
